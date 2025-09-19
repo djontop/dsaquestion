@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Problem Set</title>
+    <style>
+        /* Basic             <h4>🐍 Python Code</h4>
+            <pre><code><span class="code-comment"># We use float('inf') which represents infinity in Python</span>
+<span class="code-comment"># This ensures any real number will be larger than our initial values</span>
+def find_second_largest(arr):
+    if len(arr) < 2: return None
+    largest = -float('inf')    <span class="code-comment"># Start with negative infinity</span>
+    second_largest = -float('inf')</code></pre>*/
+        body {
+            background-color: #121212; /* Dark background */
+            color: #E0E0E0; /* Light grey text */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styling */
+        header {
+            text-align: center;
+            border-bottom: 2px solid #FFA500; /* Orange accent */
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: #FFA500; /* Orange title */
+            font-size: 2.5em;
+            margin: 0;
+        }
+        
+        header p {
+            font-size: 1.1em;
+            color: #A0A0A0;
+        }
+
+        /* Category Styling */
+        .category-title {
+            color: #E0E0E0;
+            font-size: 2em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            text-align: center;
+            border-top: 1px solid #444;
+            padding-top: 30px;
+        }
+
+        /* Section Styling for each question */
+        .dsa-section {
+            background-color: #1E1E1E; /* Slightly lighter dark */
+            border: 1px solid #333;
+            border-left: 5px solid #FFA500; /* Orange left border */
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .dsa-section h3 {
+            color: #FFA500;
+            margin-top: 0;
+        }
+        
+        .dsa-section h4 {
+            color: #CCCCCC;
+            border-bottom: 1px solid #444;
+            padding-bottom: 5px;
+            margin-top: 25px;
+        }
+
+        /* Code Block Styling */
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: "Fira Code", "Courier New", monospace;
+            font-size: 0.95em;
+        }
+
+        .code-comment {
+            color: #5c6370;
+            font-style: italic;
+        }
+
+        /* List styling for explanations */
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🧑‍💻 Comprehensive DSA Problem Set 🧑‍💻</h1>
+        <p>Your complete guide to fundamental Data Structures & Algorithms problems.</p>
+        <p style="color: #FFA500; margin-top: 15px;"><strong>Perfect for beginners!</strong> Each problem includes detailed explanations, time/space complexity analysis, and common mistakes to avoid.</p>
+    </header>
+
+    <main>
+        
+        <section class="dsa-section">
+            <h3>Explaining Common Programming Variables and Terms</h3>
+            <h4>💡 What are they?</h4>
+            <p>In programming, we use short, meaningful variable names to make our code easier to read and write. These are not special keywords; they are just common conventions that programmers follow worldwide.</p>
+            
+            <h4>🔢 Loop Counters & Indices</h4>
+            <ul>
+                <li><code><b>i</b></code>: Stands for **"index"**. Think of it as your primary finger when you count items in a list. It tracks your position in the main loop.</li>
+                <li><code><b>j</b></code>: Used when you have a loop *inside* another loop (a "nested loop"). While your `i` finger stays on a main task, your `j` finger can iterate through the sub-tasks.</li>
+                <li><code><b>k</b></code>: Used for triple-nested loops or as a third counter. Less common but follows the same pattern.</li>
+            </ul>
+
+            <h4>🎯 Pointer Variables (Very Important in DSA)</h4>
+            <ul>
+                <li><code><b>left</b></code> & <code><b>right</b></code>: Used in two-pointer techniques. Like having one finger at the start of a book and another at the end, moving them toward each other.</li>
+                <li><code><b>start</b></code> & <code><b>end</b></code>: Similar to left/right, but often used for array slicing or defining ranges.</li>
+                <li><code><b>head</b></code> & <code><b>tail</b></code>: Common in linked lists. `head` points to the first element, `tail` to the last.</li>
+                <li><code><b>prev</b></code> & <code><b>next</b></code>: Short for "previous" and "next". Used when traversing data structures like linked lists.</li>
+                <li><code><b>mid</b></code> or <code><b>middle</b></code>: The middle point, especially in binary search algorithms.</li>
+            </ul>
+
+            <h4>📊 Data Holder Variables</h4>
+            <ul>
+                <li><code><b>temp</b></code>: Short for "temporary". Used to temporarily store a value during swapping or calculations.</li>
+                <li><code><b>result</b></code>: Stores the final answer or output of a function.</li>
+                <li><code><b>count</b></code>: Keeps track of how many times something occurs.</li>
+                <li><code><b>sum</b></code>: Accumulates the total of numbers being added.</li>
+                <li><code><b>max_val</b></code> & <code><b>min_val</b></code>: Store maximum and minimum values found so far.</li>
+                <li><code><b>target</b></code>: The value we're searching for in search algorithms.</li>
+            </ul>
+
+            <h4>🏗️ Data Structure Variables</h4>
+            <ul>
+                <li><code><b>arr</b></code> or <code><b>array</b></code>: Short for "array" - a collection of elements.</li>
+                <li><code><b>lst</b></code> or <code><b>list</b></code>: Python's list data structure.</li>
+                <li><code><b>stack</b></code> & <code><b>queue</b></code>: Specific data structure variables following LIFO and FIFO principles.</li>
+                <li><code><b>node</b></code>: An element in linked lists or trees.</li>
+                <li><code><b>key</b></code> & <code><b>value</b></code>: Used with dictionaries/hash maps. Key is the identifier, value is the data.</li>
+            </ul>
+
+            <h4>✨ Pro Tips for Beginners</h4>
+            <ul>
+                <li><b>Use descriptive names:</b> `for student_name in students:` is much clearer than `for i in range(len(students)):`</li>
+                <li><b>Stay consistent:</b> If you use `left` and `right` in one function, don't switch to `start` and `end` in similar functions</li>
+                <li><b>Common is good:</b> Using these conventional names helps other programmers (and your future self) understand your code quickly</li>
+                <li><b>Context matters:</b> `i` is fine for simple loops, but `student_index` might be better in complex educational software</li>
+            </ul>
+        </section>
+
+        <h2 class="category-title">🔹 Array & String Basics</h2>
+
+        <section class="dsa-section">
+            <h3>1. Find the largest/smallest element in an array</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>Finding the tallest person in a line. You assume the first person is the tallest, then you compare every other person to them, updating your choice if you find someone taller.</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code>def find_largest(arr):
+    if not arr: return None <span class="code-comment"># Handle empty array</span>
+    largest = arr[0]
+    for num in arr:
+        if num > largest:
+            largest = num
+    return largest
+print(find_largest([10, 5, 20, 8, 15])) <span class="code-comment"># Output: 20</span></code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>Edge Case Handling:</b> `if not arr: return None` checks if the array is empty. This prevents crashes when someone passes an empty list.</li>
+                <li><b>Initialization:</b> We assume the first element (`arr[0]`) is the largest as a starting point. This gives us something to compare against.</li>
+                <li><b>The Loop:</b> `for num in arr:` goes through each number. This is called "iterating over" the array. Python automatically gives us each element one by one.</li>
+                <li><b>The Comparison:</b> `if num > largest:` asks "Is this number bigger than what I currently think is the biggest?"</li>
+                <li><b>The Update:</b> When we find a bigger number, `largest = num` updates our "current champion."</li>
+                <li><b>Why This Works:</b> By the end, we've compared every number, so `largest` must contain the actual largest value.</li>
+            </ul>
+            <h4>⚡ Time & Space Complexity</h4>
+            <ul>
+                <li><b>Time:</b> O(n) - We look at each element exactly once</li>
+                <li><b>Space:</b> O(1) - We only use one extra variable regardless of input size</li>
+            </ul>
+            <h4>❌ Common Beginner Mistakes</h4>
+            <ul>
+                <li>Forgetting to handle empty arrays (causes crashes)</li>
+                <li>Starting `largest` at 0 instead of `arr[0]` (fails with negative numbers)</li>
+                <li>Using `>=` instead of `>` (works, but unnecessary comparisons)</li>
+            </ul>
+        </section>
+
+        <section class="dsa-section">
+            <h3>2. Reverse an array (or string)</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>Swapping books on a shelf. You swap the first book with the last, the second with the second-to-last, and so on, until you meet in the middle.</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code>def reverse_array(arr):
+    left, right = 0, len(arr) - 1
+    while left < right:
+        arr[left], arr[right] = arr[right], arr[left] <span class="code-comment"># Swap</span>
+        left += 1
+        right -= 1
+    return arr
+print(reverse_array([1, 2, 3, 4, 5])) <span class="code-comment"># Output: [5, 4, 3, 2, 1]</span></code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>Two Pointers Technique:</b> We use two "pointers" (indices), `left` starting at position 0 (beginning) and `right` at position `len(arr) - 1` (end).</li>
+                <li><b>The Strategy:</b> Instead of creating a new array, we swap elements in-place, which saves memory.</li>
+                <li><b>Loop Condition:</b> `while left < right` ensures we only swap until the pointers meet in the middle. If they cross, we're done!</li>
+                <li><b>The Swap Magic:</b> `arr[left], arr[right] = arr[right], arr[left]` is Python's elegant way to swap two values without needing a temporary variable.</li>
+                <li><b>Moving Inward:</b> `left += 1` and `right -= 1` move our pointers toward each other, processing the next pair to swap.</li>
+                <li><b>Visual Example:</b> [1,2,3,4,5] → swap 1&5 → [5,2,3,4,1] → swap 2&4 → [5,4,3,2,1]. The middle element (3) never moves!</li>
+            </ul>
+            <h4>⚡ Time & Space Complexity</h4>
+            <ul>
+                <li><b>Time:</b> O(n/2) = O(n) - We swap roughly half the elements</li>
+                <li><b>Space:</b> O(1) - We modify in-place, no extra array needed</li>
+            </ul>
+            <h4>❌ Common Beginner Mistakes</h4>
+            <ul>
+                <li>Using `<=` instead of `<` in the condition (causes middle element to swap with itself)</li>
+                <li>Creating a new array instead of in-place modification (wastes memory)</li>
+                <li>Forgetting to move both pointers (infinite loop!)</li>
+            </ul>
+        </section>
+        
+        <section class="dsa-section">
+            <h3>3. Check if a string is a palindrome</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>A word that reads the same forwards and backward, like "level" or "racecar". You check by comparing the first and last letters, then the second and second-to-last, etc.</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code>def is_palindrome(s):
+    left, right = 0, len(s) - 1
+    while left < right:
+        if s[left] != s[right]:
+            return False <span class="code-comment"># Mismatch found</span>
+        left += 1
+        right -= 1
+    return True <span class="code-comment"># All characters matched</span>
+print(is_palindrome("racecar")) <span class="code-comment"># Output: True</span></code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>Two Pointers Again:</b> Like reversing an array, we use `left` and `right` pointers starting at the string's ends.</li>
+                <li><b>The Comparison Logic:</b> `if s[left] != s[right]:` compares characters at mirror positions. If any pair doesn't match, it's definitely not a palindrome.</li>
+                <li><b>Early Exit:</b> `return False` immediately stops the function when we find a mismatch - no need to check further!</li>
+                <li><b>Success Case:</b> If we get through all comparisons without finding mismatches, `return True` confirms it's a palindrome.</li>
+                <li><b>Why This Works:</b> A palindrome must be identical when read forwards and backwards, so every character at position `i` must match the character at position `n-1-i`.</li>
+                <li><b>Example Walkthrough:</b> "racecar" → compare r&r ✓, a&a ✓, c&c ✓ → palindrome!</li>
+            </ul>
+            <h4>⚡ Time & Space Complexity</h4>
+            <ul>
+                <li><b>Time:</b> O(n/2) = O(n) - We check at most half the string</li>
+                <li><b>Space:</b> O(1) - Only using two pointer variables</li>
+            </ul>
+            <h4>❌ Common Beginner Mistakes</h4>
+            <ul>
+                <li>Not handling case sensitivity ("Racecar" vs "racecar")</li>
+                <li>Not ignoring spaces and punctuation in real-world scenarios</li>
+                <li>Reversing the entire string first (works but wastes time and space)</li>
+            </ul>
+        </section>
+
+        <section class="dsa-section">
+            <h3>4. Find the second largest element in an array</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>Finding the winner and the runner-up in a race. You need to keep track of the two fastest times you've seen so far.</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code>import float
+def find_second_largest(arr):
+    if len(arr) < 2: return None
+    largest = -float('inf')
+    second_largest = -float('inf')
+    for num in arr:
+        if num > largest:
+            second_largest = largest
+            largest = num
+        elif num > second_largest and num != largest:
+            second_largest = num
+    return second_largest if second_largest != -float('inf') else None
+print(find_second_largest([10, 5, 20, 8, 15])) <span class="code-comment"># Output: 15</span></code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>Why float('inf')?</b> `float('inf')` represents mathematical infinity in Python. We use `-float('inf')` (negative infinity) so ANY real number will be larger than our starting values.</li>
+                <li><b>Edge Case:</b> `if len(arr) < 2: return None` - You need at least 2 elements to have a "second largest"!</li>
+                <li><b>Initialization Strategy:</b> Starting with negative infinity ensures our algorithm works even with arrays full of negative numbers.</li>
+                <li><b>Case 1 - New Champion:</b> When `num > largest`, the old champion becomes the runner-up, and we have a new champion.</li>
+                <li><b>Case 2 - New Runner-up:</b> When a number isn't the largest but beats our current second_largest AND isn't equal to largest (avoids duplicates), it becomes our new runner-up.</li>
+                <li><b>Final Check:</b> We return `None` if `second_largest` is still negative infinity, meaning we never found a valid second largest (e.g., all elements are identical).</li>
+                <li><b>Example Walkthrough:</b> [10, 5, 20, 8, 15] → largest=10, second=−∞ → largest=20, second=10 → second stays 10 → second stays 10 → largest=20, second=15</li>
+            </ul>
+            <h4>⚡ Time & Space Complexity</h4>
+            <ul>
+                <li><b>Time:</b> O(n) - Single pass through the array</li>
+                <li><b>Space:</b> O(1) - Only two extra variables</li>
+            </ul>
+            <h4>❌ Common Beginner Mistakes</h4>
+            <ul>
+                <li>Not handling duplicate largest values correctly</li>
+                <li>Starting with 0 instead of negative infinity (fails with negative arrays)</li>
+                <li>Sorting the array first (works but takes O(n log n) time unnecessarily)</li>
+                <li>Not checking `num != largest` (could make duplicates the second largest)</li>
+            </ul>
+        </section>
+
+        <section class="dsa-section">
+            <h3>5. Count the frequency of elements in an array</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>Tallying votes in an election. You have a list of candidate names (the array) and you create a summary sheet (a dictionary) to count how many votes each candidate received.</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code>def count_frequency(arr):
+    frequency = {} <span class="code-comment"># Create an empty dictionary</span>
+    for item in arr:
+        frequency[item] = frequency.get(item, 0) + 1
+    return frequency
+print(count_frequency(['apple', 'banana', 'apple', 'orange'])) 
+<span class="code-comment"># Output: {'apple': 2, 'banana': 1, 'orange': 1}</span></code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>Dictionary as Counter:</b> A dictionary in Python is perfect for counting because keys are unique and we can store counts as values.</li>
+                <li><b>The get() Method Magic:</b> `frequency.get(item, 0)` asks "What's the current count for this item?" If the item doesn't exist yet, it returns 0 instead of crashing.</li>
+                <li><b>The Counting Logic:</b> `frequency.get(item, 0) + 1` takes the current count (or 0 if new) and adds 1 to it.</li>
+                <li><b>Memory Efficient:</b> Instead of checking "does this key exist?" separately, `.get()` handles both checking and defaulting in one step.</li>
+                <li><b>Alternative Approach:</b> You could also use `collections.Counter(arr)` for the same result, but understanding the manual approach teaches you how dictionaries work.</li>
+                <li><b>Real-World Usage:</b> This pattern appears everywhere - counting website visits, analyzing survey responses, finding most common words in text, etc.</li>
+            </ul>
+            <h4>⚡ Time & Space Complexity</h4>
+            <ul>
+                <li><b>Time:</b> O(n) - We visit each element exactly once</li>
+                <li><b>Space:</b> O(k) where k is the number of unique elements</li>
+            </ul>
+            <h4>❌ Common Beginner Mistakes</h4>
+            <ul>
+                <li>Using `frequency[item] += 1` without checking if key exists first (KeyError!)</li>
+                <li>Manually checking `if item in frequency:` before incrementing (works but verbose)</li>
+                <li>Not understanding that dictionary keys must be immutable (strings, numbers OK; lists not OK)</li>
+            </ul>
+        </section>
+
+        <section class="dsa-section">
+            <h3>6. Rotate an array by k positions</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>Shifting people in a circular line. If you need to move the line forward by 2 positions, the last 2 people go to the front.</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code>def rotate_array(arr, k):
+    n = len(arr)
+    k = k % n <span class="code-comment"># Handle cases where k > n</span>
+    <span class="code-comment"># Slice the array at n-k and concatenate the two parts</span>
+    return arr[-k:] + arr[:-k]
+print(rotate_array([1, 2, 3, 4, 5], 2)) <span class="code-comment"># Output: [4, 5, 1, 2, 3]</span></code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>Modulus:</b> `k = k % n` ensures that if `k` is larger than the array length, we only consider the effective rotation.</li>
+                <li><b>Slicing:</b> Python's slicing makes this easy. `arr[-k:]` gets the last `k` elements. `arr[:-k]` gets all elements *except* the last `k`.</li>
+                <li><b>Concatenation:</b> We combine these two slices with `+` to form the new, rotated array.</li>
+            </ul>
+        </section>
+
+        <section class="dsa-section">
+            <h3>7. Find the missing number in an array of size n containing numbers 1..n+1</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>You have a set of numbered puzzle pieces from 1 to 10, but you only count 9 pieces. To find the missing one, you calculate the sum of numbers from 1 to 10 and subtract the sum of the pieces you have.</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code>def find_missing_number(arr):
+    n = len(arr) + 1
+    expected_sum = n * (n + 1) // 2
+    actual_sum = sum(arr)
+    return expected_sum - actual_sum
+print(find_missing_number([1, 2, 4, 5, 6])) <span class="code-comment"># n=6, missing 3. Output: 3</span></code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>Expected Sum:</b> We use the mathematical formula `n * (n + 1) / 2` to calculate what the sum *should* be if no number were missing.</li>
+                <li><b>Actual Sum:</b> We use Python's built-in `sum()` function to get the sum of the elements we actually have.</li>
+                <li><b>Difference:</b> The difference between the expected and actual sum is the missing number.</li>
+            </ul>
+        </section>
+
+        <section class="dsa-section">
+            <h3>8. Merge two sorted arrays</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>Merging two sorted lines of people by height. You look at the first person in each line, pick the shorter one to go next in the new line, and repeat the process.</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code>def merge_sorted_arrays(arr1, arr2):
+    merged = []
+    i, j = 0, 0
+    while i < len(arr1) and j < len(arr2):
+        if arr1[i] < arr2[j]:
+            merged.append(arr1[i])
+            i += 1
+        else:
+            merged.append(arr2[j])
+            j += 1
+    merged.extend(arr1[i:]) <span class="code-comment"># Add leftovers from arr1</span>
+    merged.extend(arr2[j:]) <span class="code-comment"># Add leftovers from arr2</span>
+    return merged
+print(merge_sorted_arrays([1, 3, 5], [2, 4, 6])) <span class="code-comment"># Output: [1, 2, 3, 4, 5, 6]</span></code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>Pointers `i` and `j`:</b> `i` tracks the position in `arr1`, and `j` tracks the position in `arr2`.</li>
+                <li><b>Main Loop:</b> The `while` loop compares elements from both arrays and appends the smaller one to the `merged` list, advancing the corresponding pointer.</li>
+                <li><b>Cleanup:</b> After the loop, one array will be exhausted while the other may still have elements. The `extend` lines add all remaining elements.</li>
+            </ul>
+        </section>
+
+        <h2 class="category-title">🔹 Searching & Sorting</h2>
+
+        <section class="dsa-section">
+            <h3>9. Implement linear search</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>Looking for your car in a large parking lot row. You start at one end and check every single car, one by one, until you find yours.</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code>def linear_search(arr, target):
+    <span class="code-comment"># Loop through each index position in the array</span>
+    for i in range(len(arr)):
+        <span class="code-comment"># Check if current element matches what we're looking for</span>
+        if arr[i] == target:
+            return i <span class="code-comment"># Found it! Return the index position</span>
+    return -1 <span class="code-comment"># Not found - return -1 as a "not found" signal</span>
+
+<span class="code-comment"># Example usage:</span>
+print(linear_search([5, 2, 8, 12, 3], 8))  <span class="code-comment"># Output: 2 (8 is at index 2)</span>
+print(linear_search([5, 2, 8, 12, 3], 99)) <span class="code-comment"># Output: -1 (99 not found)</span></code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>Iteration with `i`:</b> The `for` loop goes through each index `i` of the array, from `0` to the end.</li>
+                <li><b>Comparison:</b> `if arr[i] == target:` checks if the element at the current index `i` is the one we're looking for.</li>
+                <li><b>Return:</b> If found, we return the index `i` immediately. If the loop finishes without finding the target, we return `-1`.</li>
+            </ul>
+        </section>
+        
+        <section class="dsa-section">
+            <h3>10. Implement binary search</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>Searching for a word in a physical dictionary. You don't start from the first page. You open to the middle, see if your word comes before or after that page, and then discard half the dictionary. You repeat this process.</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code>def binary_search(sorted_arr, target):
+    left, right = 0, len(sorted_arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if sorted_arr[mid] == target:
+            return mid
+        elif sorted_arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+print(binary_search([2, 5, 7, 8, 11, 12], 11)) <span class="code-comment"># Output: 4</span></code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>CRITICAL Pre-requisite:</b> Binary search ONLY works on **sorted** arrays. If your array isn't sorted, you'll get wrong results!</li>
+                <li><b>The Search Space:</b> We define our search area using `left` and `right` pointers. Initially, we search the entire array.</li>
+                <li><b>Finding the Middle:</b> `mid = (left + right) // 2` finds the middle index. The `//` is integer division (no decimals).</li>
+                <li><b>Three-Way Decision:</b> At each step, we compare `sorted_arr[mid]` with our `target` and make one of three decisions:</li>
+                <li style="margin-left: 20px;"><b>Found it!</b> If `sorted_arr[mid] == target`, return the index immediately.</li>
+                <li style="margin-left: 20px;"><b>Go right:</b> If `sorted_arr[mid] < target`, our target must be in the right half, so `left = mid + 1`.</li>
+                <li style="margin-left: 20px;"><b>Go left:</b> If `sorted_arr[mid] > target`, our target must be in the left half, so `right = mid - 1`.</li>
+                <li><b>Why It's Fast:</b> Each step eliminates half the remaining elements, making it much faster than linear search for large arrays.</li>
+                <li><b>Loop Termination:</b> `while left <= right` continues until our search space becomes invalid (when left pointer crosses right pointer).</li>
+            </ul>
+            <h4>⚡ Time & Space Complexity</h4>
+            <ul>
+                <li><b>Time:</b> O(log n) - We cut the search space in half each time</li>
+                <li><b>Space:</b> O(1) - Only using a few pointer variables</li>
+            </ul>
+            <h4>❌ Common Beginner Mistakes</h4>
+            <ul>
+                <li>Forgetting that the array must be sorted first</li>
+                <li>Using `while left < right` instead of `while left <= right` (misses some cases)</li>
+                <li>Integer overflow: `mid = (left + right) // 2` can overflow in some languages (Python handles this automatically)</li>
+                <li>Off-by-one errors: using `mid` instead of `mid + 1` or `mid - 1` when updating pointers</li>
+            </ul>
+        </section>
+
+        <section class="dsa-section">
+            <h3>11. Sort an array using bubble sort</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>Imagine bubbles in a tank of water. The largest bubbles rise to the top first. In each "pass" through the array, the largest unsorted element "bubbles up" to its correct position at the end.</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code>def bubble_sort(arr):
+    n = len(arr)
+    <span class="code-comment"># Outer loop: controls how many passes we make</span>
+    for i in range(n):
+        <span class="code-comment"># Inner loop: compares adjacent elements</span>
+        <span class="code-comment"># We reduce the range each time because the largest elements "bubble up" to the end</span>
+        for j in range(0, n - i - 1):
+            <span class="code-comment"># If current element is greater than the next one, swap them</span>
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j] <span class="code-comment"># Python swap</span>
+    return arr
+
+<span class="code-comment"># Example: Watch the largest elements "bubble" to the end</span>
+print(bubble_sort([64, 34, 25, 12, 22, 11, 90])) 
+<span class="code-comment"># Output: [11, 12, 22, 25, 34, 64, 90]</span></code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>Outer Loop (`i`):</b> This loop controls the number of passes. After `i` passes, the last `i` elements are guaranteed to be sorted.</li>
+                <li><b>Inner Loop (`j`):</b> This loop iterates through the unsorted part of the array, comparing adjacent elements.</li>
+                <li><b>Swap:</b> If an element is greater than the one next to it, they are swapped. This action is what moves the largest elements towards the end.</li>
+            </ul>
+        </section>
+
+        <h2 class="category-title">🔹 Hashing / Sets</h2>
+
+        <section class="dsa-section">
+            <h3>12. Find the first non-repeating character in a string</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>Taking attendance. You go through the list of names, making a tally mark for each. Then, you look at your tally sheet from the beginning to find the first name with only one mark.</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code>def first_non_repeating_char(s):
+    counts = {}
+    for char in s:
+        counts[char] = counts.get(char, 0) + 1
+    for char in s:
+        if counts[char] == 1:
+            return char
+    return None
+print(first_non_repeating_char("loveleetcode")) <span class="code-comment"># Output: 'v'</span></code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>First Pass (Count):</b> We loop through the string once to build a frequency map (dictionary) of all characters.</li>
+                <li><b>Second Pass (Find):</b> We loop through the string a second time. For each character, we look up its count in our map. The first one we find with a count of `1` is our answer.</li>
+            </ul>
+        </section>
+        
+        <section class="dsa-section">
+            <h3>13. Check if two strings are anagrams</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>Two words are anagrams if you can make one by rearranging the letters of the other, like "listen" and "silent". To verify, you can sort the letters of both words; if they become identical, they are anagrams.</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code>def are_anagrams(s1, s2):
+    if len(s1) != len(s2):
+        return False
+    return sorted(s1) == sorted(s2)
+print(are_anagrams("listen", "silent")) <span class="code-comment"># Output: True</span></code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>Length Check:</b> Anagrams must have the same number of letters, so we first check their lengths.</li>
+                <li><b>Sort and Compare:</b> The most elegant Python solution is to sort both strings. `sorted(s)` returns a sorted list of characters. If these two lists are equal, the original strings were anagrams.</li>
+            </ul>
+        </section>
+
+        <section class="dsa-section">
+            <h3>14. Remove duplicates from an array</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>Creating a unique guest list. You are given several lists of attendees, and you need to compile a final list where each person's name appears only once.</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code>def remove_duplicates(arr):
+    <span class="code-comment"># A set is a data structure that only stores unique elements.</span>
+    return list(set(arr))
+print(remove_duplicates([1, 2, 2, 3, 4, 4, 5])) <span class="code-comment"># Output: [1, 2, 3, 4, 5]</span></code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>Set:</b> A `set` in Python is a collection that, by definition, cannot contain duplicate elements.</li>
+                <li><b>Conversion:</b> We convert the input list `arr` into a set. This automatically discards all duplicate values.</li>
+                <li><b>Back to List:</b> We then convert the set back into a list and return it. Note that this does not preserve the original order.</li>
+            </ul>
+        </section>
+
+        <h2 class="category-title">🔹 Linked List (basic level)</h2>
+
+        <section class="dsa-section">
+            <h3>15. Implement a singly linked list and insert a node</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>A treasure hunt. Each clue is a `Node` containing some information (`data`) and the location of the next clue (`next`). The `head` is the first clue you are given.</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code>class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+    
+    def insert_at_end(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+            return
+        last_node = self.head
+        while last_node.next:
+            last_node = last_node.next
+        last_node.next = new_node</code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>Understanding Node:</b> Think of a Node like a train car. Each car carries some cargo (`data`) and has a connection to the next car (`next`).</li>
+                <li><b>Understanding LinkedList:</b> The LinkedList class is like the train conductor who knows where the train starts (`head`) but doesn't need to know about every car.</li>
+                <li><b>Why `self.next = None`?</b> When we create a new node, it doesn't point to anything yet, so `next` starts as `None` (meaning "no next car").</li>
+                <li><b>Insertion Logic:</b> 
+                    <ul>
+                        <li>If the train is empty (`not self.head`), our new car becomes the entire train.</li>
+                        <li>Otherwise, we walk from the head to the very last car (`while last_node.next:`).</li>
+                        <li>We connect the last car to our new car (`last_node.next = new_node`).</li>
+                    </ul>
+                </li>
+                <li><b>Why Traverse to End?</b> Unlike arrays where we can jump to any position instantly, linked lists require us to follow the chain from the beginning.</li>
+            </ul>
+            <h4>⚡ Time & Space Complexity</h4>
+            <ul>
+                <li><b>Time:</b> O(n) for insertion at end (must traverse to find last node)</li>
+                <li><b>Space:</b> O(1) for each insertion (just creating one new node)</li>
+            </ul>
+            <h4>❌ Common Beginner Mistakes</h4>
+            <ul>
+                <li>Forgetting to handle the empty list case (trying to traverse when head is None)</li>
+                <li>Not updating the `next` pointer properly (breaking the chain)</li>
+                <li>Confusing Node (individual element) with LinkedList (the entire structure)</li>
+            </ul>
+        </section>
+        
+        <section class="dsa-section">
+            <h3>16. Reverse a linked list</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>Reversing a train on a single track. You go to each car, unhitch it from the car in front, and re-hitch it to the car that was previously behind it. You need to keep track of the previous, current, and next car at all times.</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code>def reverse_linked_list(head):
+    prev = None
+    current = head
+    while current:
+        next_node = current.next <span class="code-comment"># Store next node</span>
+        current.next = prev     <span class="code-comment"># Reverse the pointer</span>
+        prev = current          <span class="code-comment"># Move prev forward</span>
+        current = next_node     <span class="code-comment"># Move current forward</span>
+    return prev <span class="code-comment"># The new head is the old last node</span></code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>Pointers:</b> We use three pointers: `prev` (starts as `None`), `current` (starts at the `head`), and `next_node`.</li>
+                <li><b>Loop:</b> We iterate while `current` is not `None`.</li>
+                <li><b>The Reversal Logic (in order):</b>
+                    <ol>
+                        <li>First, we save the next node so we don't lose the rest of the list.</li>
+                        <li>Then, we reverse the `current` node's pointer to point to `prev`.</li>
+                        <li>We then move our `prev` and `current` pointers one step forward for the next iteration.</li>
+                    </ol>
+                </li>
+                <li><b>New Head:</b> When the loop ends, `prev` will be pointing to the new head of the reversed list.</li>
+            </ul>
+        </section>
+
+        <section class="dsa-section">
+            <h3>17. Detect a cycle in a linked list</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>Two runners on a track. One runs at normal speed (slow pointer) and the other runs twice as fast (fast pointer). If the track is a circle (a cycle), the fast runner will eventually lap the slow runner and they will meet. If it's a straight path, the fast runner will simply reach the end.</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code>def has_cycle(head):
+    slow, fast = head, head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            return True <span class="code-comment"># Pointers met, cycle detected</span>
+    return False <span class="code-comment"># Fast pointer reached the end</span></code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>Two Pointers:</b> We initialize a `slow` and a `fast` pointer, both starting at the `head`.</li>
+                <li><b>Movement:</b> In each step of the loop, `slow` moves one node forward, while `fast` moves two nodes forward.</li>
+                <li><b>Loop Condition:</b> The loop continues as long as `fast` and `fast.next` are not `None`. If they are, it means we've reached the end of a non-cyclical list.</li>
+                <li><b>Detection:</b> If at any point `slow` and `fast` point to the exact same node, it proves there is a cycle in the list.</li>
+            </ul>
+        </section>
+
+        <h2 class="category-title">🔹 Stack & Queue</h2>
+
+        <section class="dsa-section">
+            <h3>18. Implement a stack using arrays</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>A stack of plates. You can only add a new plate to the top (`push`) and you can only take a plate from the top (`pop`). This is a Last-In, First-Out (LIFO) structure.</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code>class Stack:
+    def __init__(self):
+        self.items = []
+    def push(self, item):
+        self.items.append(item)
+    def pop(self):
+        if not self.is_empty():
+            return self.items.pop()
+    def peek(self):
+        if not self.is_empty():
+            return self.items[-1]
+    def is_empty(self):
+        return len(self.items) == 0</code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>Implementation:</b> A Python list is perfect for implementing a simple stack.</li>
+                <li><b>push:</b> `list.append()` adds an item to the end of the list, which we consider the "top" of our stack.</li>
+                <li><b>pop:</b> `list.pop()` removes and returns the last item, perfectly matching the LIFO principle.</li>
+                <li><b>peek:</b> Accessing `self.items[-1]` lets us see the top item without removing it.</li>
+            </ul>
+        </section>
+        
+        <section class="dsa-section">
+            <h3>19. Implement a queue using arrays</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>A checkout line at a grocery store. The first person to get in line is the first person to be served. This is a First-In, First-Out (FIFO) structure.</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code>class Queue:
+    def __init__(self):
+        self.items = []
+    def enqueue(self, item):
+        self.items.append(item)
+    def dequeue(self):
+        if not self.is_empty():
+            return self.items.pop(0) <span class="code-comment"># Remove from the front</span>
+    def is_empty(self):
+        return len(self.items) == 0</code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>Implementation:</b> We use a Python list.</li>
+                <li><b>enqueue:</b> `list.append()` adds an item to the back of the line.</li>
+                <li><b>dequeue:</b> `list.pop(0)` removes and returns the item from the front of the line (index 0). *Note: This is inefficient for long lists. For real applications, use `collections.deque`.*</li>
+            </ul>
+        </section>
+
+        <section class="dsa-section">
+            <h3>20. Check for balanced parentheses</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>Stacking different sized plates. When you put an opening bracket `(` on the stack, you can only remove it with a matching `)`. If you try to close with `]` while `(` is on top, it's an error.</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code>def are_parentheses_balanced(s):
+    stack = []
+    mapping = {")": "(", "}": "{", "]": "["}
+    for char in s:
+        if char in mapping.values():
+            stack.append(char)
+        elif char in mapping:
+            if not stack or mapping[char] != stack.pop():
+                return False
+    return not stack
+print(are_parentheses_balanced("()[]{}")) <span class="code-comment"># Output: True</span></code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>Stack:</b> We use a stack to keep track of opening brackets as we see them.</li>
+                <li><b>Opening Bracket:</b> If we see an opening bracket, we `push` it onto the stack.</li>
+                <li><b>Closing Bracket:</b> If we see a closing bracket, we `pop` from the stack and check if it's the correct matching opener. If the stack is empty or the brackets don't match, the string is unbalanced.</li>
+                <li><b>Final Check:</b> If the string is balanced, the stack should be empty at the end.</li>
+            </ul>
+        </section>
+
+        <h2 class="category-title">🔹 Math / Logic Based</h2>
+
+        <section class="dsa-section">
+            <h3>21. Find the factorial of a number</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>The number of unique ways you can arrange a set of distinct items. For 3 books, there are `3 * 2 * 1 = 6` ways to arrange them on a shelf. This is "3 factorial" or `3!`.</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code>def factorial(n):
+    if n < 0: return "Invalid input"
+    if n == 0: return 1
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    return result
+print(factorial(5)) <span class="code-comment"># Output: 120 (5*4*3*2*1)</span></code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>Base Cases:</b> The factorial of 0 is 1. Negative numbers don't have factorials.</li>
+                <li><b>Initialization:</b> We start our `result` at 1.</li>
+                <li><b>Loop:</b> We loop from 1 up to and including `n`. In each step, we multiply the `result` by the current number `i`.</li>
+            </ul>
+        </section>
+        
+        <section class="dsa-section">
+            <h3>22. Check if a number is prime</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>A prime number of items (like 7) can only be arranged in a single row. A non-prime number (like 6) can be arranged in other rectangles (2x3). A prime is only divisible by 1 and itself.</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code><span class="code-comment"># We import 'math' to use math.sqrt() function</span>
+<span class="code-comment"># The math module provides mathematical functions like sqrt, ceil, floor, etc.</span>
+import math
+def is_prime(n):
+    if n <= 1: return False
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            return False
+    return True
+print(is_prime(13)) <span class="code-comment"># Output: True</span>
+print(is_prime(12)) <span class="code-comment"># Output: False</span></code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>Why Import math?</b> The `math` module gives us access to mathematical functions. Here we use `math.sqrt(n)` to find the square root of n efficiently.</li>
+                <li><b>Base Case Logic:</b> Numbers ≤ 1 are not prime by mathematical definition. 2 is the smallest prime number.</li>
+                <li><b>The Square Root Optimization:</b> If n has a divisor larger than √n, it must also have a corresponding divisor smaller than √n. So we only need to check up to √n!</li>
+                <li><b>Example:</b> For n=36, √36=6. Instead of checking divisors 1,2,3,4,5,6,7,8...36, we only check 2,3,4,5,6. We find 6 divides 36, so it's not prime.</li>
+                <li><b>The Modulo Operator:</b> `n % i == 0` checks if n is perfectly divisible by i (no remainder).</li>
+                <li><b>Why int()?</b> `math.sqrt()` returns a float, but `range()` needs integers, so we convert with `int()`.</li>
+                <li><b>The +1:</b> `int(math.sqrt(n)) + 1` ensures we include the square root itself in our range if it's a perfect square.</li>
+            </ul>
+            <h4>⚡ Time & Space Complexity</h4>
+            <ul>
+                <li><b>Time:</b> O(√n) - Much faster than checking all numbers up to n</li>
+                <li><b>Space:</b> O(1) - Only using a few variables</li>
+            </ul>
+            <h4>❌ Common Beginner Mistakes</h4>
+            <ul>
+                <li>Checking all numbers up to n instead of √n (very slow for large numbers)</li>
+                <li>Not handling edge cases like 0, 1, and negative numbers</li>
+                <li>Starting the loop from 1 instead of 2 (1 divides everything)</li>
+                <li>Forgetting the +1 in the range (might miss perfect square divisors)</li>
+            </ul>
+        </section>
+
+        <section class="dsa-section">
+            <h3>23. Find the Fibonacci number</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>A simplified model for a rabbit population's growth. Each number is the sum of the two preceding ones: 0, 1, 1, 2, 3, 5, 8...</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code>def fibonacci(n):
+    if n <= 1: return n
+    a, b = 0, 1
+    for _ in range(n - 1):
+        a, b = b, a + b
+    return b
+print(fibonacci(7)) <span class="code-comment"># The 7th number is 13 (0-indexed)</span></code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>The Fibonacci Pattern:</b> Each number is the sum of the two preceding ones: F(0)=0, F(1)=1, F(2)=0+1=1, F(3)=1+1=2, F(4)=1+2=3, F(5)=2+3=5...</li>
+                <li><b>Base Cases:</b> F(0)=0 and F(1)=1 are defined mathematically. These are our starting points.</li>
+                <li><b>Efficient Approach:</b> Instead of calculating F(n-1) and F(n-2) separately (which would be very slow), we build up from the bottom.</li>
+                <li><b>The Variables:</b> `a` holds the "current" Fibonacci number, `b` holds the "next" one.</li>
+                <li><b>The Loop Logic:</b> We repeat `n-1` times because we start with F(0) and F(1) already known.</li>
+                <li><b>The Simultaneous Update:</b> `a, b = b, a + b` is Python magic that updates both variables at once:
+                    <ul>
+                        <li>New `a` becomes the old `b`</li>
+                        <li>New `b` becomes the old `a + b`</li>
+                    </ul>
+                </li>
+                <li><b>Example Trace for F(5):</b> Start: a=0, b=1 → a=1, b=1 → a=1, b=2 → a=2, b=3 → a=3, b=5. Result: 5</li>
+            </ul>
+            <h4>⚡ Time & Space Complexity</h4>
+            <ul>
+                <li><b>Time:</b> O(n) - We calculate each Fibonacci number exactly once</li>
+                <li><b>Space:</b> O(1) - Only using two variables instead of recursion call stack</li>
+            </ul>
+            <h4>❌ Common Beginner Mistakes</h4>
+            <ul>
+                <li>Using naive recursion (exponential time - very slow for large n)</li>
+                <li>Not handling the base cases n=0 and n=1 correctly</li>
+                <li>Getting confused by the simultaneous assignment syntax</li>
+                <li>Off-by-one errors in the loop count</li>
+            </ul>
+        </section>
+        
+        <section class="dsa-section">
+            <h3>24. Find the GCD of two numbers</h3>
+            <h4>💡 Real-Life Analogy</h4>
+            <p>Finding the largest possible square tile size that can perfectly cover a rectangular floor (e.g., 24x18) without any cutting. The tile size would be the GCD of the floor's dimensions.</p>
+            <h4>🐍 Python Code</h4>
+            <pre><code><span class="code-comment"># Using the Euclidean Algorithm</span>
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+print(gcd(48, 18)) <span class="code-comment"># Output: 6</span></code></pre>
+            <h4>📖 Explanation</h4>
+            <ul>
+                <li><b>Euclidean Algorithm:</b> This is a highly efficient classical algorithm for finding the Greatest Common Divisor (GCD).</li>
+                <li><b>Loop:</b> The `while b:` loop continues as long as `b` is not zero.</li>
+                <li><b>The Swap:</b> In each step, `a` becomes `b`, and `b` becomes the remainder of `a` divided by `b` (`a % b`).</li>
+                <li><b>Result:</b> When `b` becomes `0`, the value left in `a` is the GCD.</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>A Comprehensive DSA Practice Page. Happy Coding!</p>
+    </footer>
+</div>
+
+</body>
+</html>
